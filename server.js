@@ -19,7 +19,7 @@ app.get("/", function (req, res) {
 });
 
 app.get("/api/whoami", function (req, res) {
-  res.json({greeting: 'hello API'});
+  res.json({ipadress: req.connection.remoteAddress});
 });
 
 // listen for requests 
