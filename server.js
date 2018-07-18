@@ -19,7 +19,12 @@ app.get("/", function (req, res) {
 });
 
 app.get("/api/whoami", function (req, res) {
-  res.json({ipadress: req.connection.remoteAddress});
+  const ip = (req.header('x-forwarded-for') || req.connection.remoteAddress).split(',').slice(0, 1).join('')
+  const lang = req.headers['accept-language']
+  const software = req.headers['software']
+  res.json({  ipaddress: ip,
+              language: lang,
+              software: software});
 });
 
 // listen for requests 
